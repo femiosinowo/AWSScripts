@@ -14,3 +14,4 @@ REGION=$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/documen
 TAG_VALUE=$(aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region=$REGION --output=text | cut -f5)
 
 echo "$TAG_VALUE"
+export FACTER_ROLE="$TAG_VALUE"
